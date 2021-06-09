@@ -2,11 +2,12 @@ import styled from "styled-components";
 import palette from "../../utils/palette";
 import Link from "next/link";
 
-const HeaderBody = styled.div`
+export const HeaderBody = styled.div`
   width: 100%;
+  margin-top: 30px;
 `;
 
-const CategoryLink = styled.div`
+export const CategoryLink = styled.div`
   width: 60%;
   display: flex;
   margin: 0 auto;
@@ -16,24 +17,18 @@ const CategoryLink = styled.div`
   overflow-x: hidden;
 `;
 
-const CategoryLinkItem = styled(Link)`
+export const CategoryRouterItem = styled.div`
   padding: 6px 8px 6px 16px;
   margin-right: 3px;
-  text-decoration: none;
   font-size: 18px;
-  color: black;
-  display: block;
-  &.hover {
-    border-bottom: 3px solid ${palette.base_color[2]};
+  color: ${(p) => (p.active ? `${palette.base_color[2]}` : `${palette.gray[6]}`)};
+
+  &:hover {
+    color: ${palette.base_color[2]};
+    cursor: pointer;
   }
-  &.active {
-    color: black;
-    font-weight: bold;
-    border-bottom: 3px solid ${palette.base_color[2]};
-  }
+
   @media (max-width: 850px) {
     font-size: 18px;
   }
 `;
-
-export { CategoryLinkItem, CategoryLink, HeaderBody };

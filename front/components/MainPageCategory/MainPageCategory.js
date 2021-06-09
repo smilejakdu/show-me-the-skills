@@ -1,7 +1,12 @@
-import React from 'react'
-import {HeaderBody ,
-        CategoryLink ,
-        CategoryLinkItem} from "./MainPageCategory.style"
+import React , {useState} from 'react'
+import {
+  HeaderBody,
+  CategoryLink,
+  CategoryRouterItem,
+  SelectRouterItem,
+} from "./MainPageCategory.style";
+import {useRouter} from "next/router"
+import axios from "axios";
 
 const categories = [
   { name: "total", text: "전체보기" },
@@ -10,18 +15,31 @@ const categories = [
 ];
 
 const MainPageCategory=()=> {
+  const [active , setActive]= useState(1);
+  const router = useRouter()
+
+
+  const ColorSelect = (selectColor) =>{
+    setActive(selectColor);
+  }
+
   return (
-    <HeaderBody>
-      <CategoryLink>
-        {categories.map((c) => (
-          <CategoryLinkItem
-            href={c.name === "total" ? "/today" : `/${c.name}`}
-          >
-            {c.text}
-          </CategoryLinkItem>
-        ))}
-      </CategoryLink>
-    </HeaderBody>
+    <div>
+      <HeaderBody>
+        <CategoryLink>
+          {categories.map((c, idx) => (
+            <CategoryRouterItem
+              onClick={() => ColorSelect(idx)}
+              // 삼항 연산자를 써줘야 할것같은 느낌적인 느낌 ??
+              active={active === idx}
+            >
+              {c.text}
+            </CategoryRouterItem>
+          ))}
+        </CategoryLink>
+      </HeaderBody>
+      {active}
+    </div>
   );
 }
 

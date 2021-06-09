@@ -8,13 +8,13 @@ import { NavLinkCustom, NavbarBrandCustom } from "./AppLayout.style";
 
 const AppLayout = ({children}) =>{
   return (
-      <div>
-        <head>
-          <title>show me the skills</title>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <style dangerouslySetInnerHTML={{ __html: bootstrapStyle }} />
-        </head>
+    <div>
+      <head>
+        <title>show me the skills</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <style dangerouslySetInnerHTML={{ __html: bootstrapStyle }} />
+      </head>
       <Navbar
         bg="light"
         expand="lg"
@@ -24,19 +24,27 @@ const AppLayout = ({children}) =>{
         }}
       >
         <Container>
-          <Navbar.Brand href="/lesson">
+          <Navbar.Brand href="/">
             <NavbarBrandCustom>Show Me the Skills</NavbarBrandCustom>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/lesson"><NavLinkCustom>Lesson</NavLinkCustom></Nav.Link>
-              <Nav.Link href="/mentoring"><NavLinkCustom>Mentoring</NavLinkCustom></Nav.Link>
+              <Nav.Link href="/">
+                <NavLinkCustom>Lesson</NavLinkCustom>
+              </Nav.Link>
+              <Nav.Link href="/mentoring">
+                <NavLinkCustom>Mentoring</NavLinkCustom>
+              </Nav.Link>
             </Nav>
+            <Navbar.Text>
+              <a href="/login">Login</a>
+            </Navbar.Text>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      </div>
+      {children}
+    </div>
   );
 };
 

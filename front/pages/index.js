@@ -1,12 +1,15 @@
-import React from 'react';
+import React , {useState} from 'react';
 import AppLayout from '../components/AppLayout/AppLayout';
+import MainPageCategory from '../components/MainPageCategory/MainPageCategory';
 
-const Home = ()=>{
+
+const Lesson = ()=>{
   return (
     <AppLayout>
-      <div>Hello , next!</div>
+      <MainPageCategory/>
+      <div style={{fontSize:"100px"}}>Hello , next!</div>
     </AppLayout>
   );
 }
 
-export default Home;
+export default Lesson;
